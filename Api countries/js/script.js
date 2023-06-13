@@ -7,14 +7,17 @@ const checkbox = document.querySelector("#checkbox");
 const container = document.querySelector(".container");
 const navbar = document.querySelector(".navbar");
 const loader = document.querySelector(".loader");
+const countryModal = document.querySelector(".countryModal");
+
 const api_link = "https://restcountries.com/v3.1/all";
 
 const getData = async (api) => {
+  loader.classList.add("act");
   const req = await fetch(api);
   const data = await req.json();
   data.forEach((item) => {
     contires.innerHTML += `
-   <div class="box">
+   <div class="box" onclick="getCountry(${item.idd.root})">
    <img src="${item.flags.png} " alt="">
    <h1>${item.name.common}</h1>
    <div class="title">
@@ -28,8 +31,10 @@ const getData = async (api) => {
  </div>
    `;
   });
+  loader.classList.remove("act");
 };
 getData(api_link);
+
 checkbox.addEventListener("click", () => {
   container.classList.toggle("active");
   contires.classList.toggle("active");
@@ -49,8 +54,6 @@ input.addEventListener("input", () => {
     }
   });
 });
-
-
 select.addEventListener("change", () => {
   const selecttV = select.value;
   contires.childNodes.forEach((item) => {
@@ -65,19 +68,22 @@ select.addEventListener("change", () => {
       }
     }
     input.value = "";
+    input2.value = "";
   });
 });
-
 input2.addEventListener("input", () => {
-    const searchC = input2.value.toLowerCase().trim();
-    contires.childNodes.forEach((item) => {
-      if (item.className) {
-        let countryName = item.querySelector(".capital").textContent.toLowerCase();
-        if (!countryName.includes(searchC)) {
-          item.classList.add("hidden");
-        } else {
-          item.classList.remove("hidden");
-        }
+  const searchC = input2.value.toLowerCase().trim();
+  contires.childNodes.forEach((item) => {
+    if (item.className) {
+      let countryName = item
+        .querySelector(".capital")
+        .textContent.toLowerCase();
+      if (!countryName.includes(searchC)) {
+        item.classList.add("hidden");
+      } else {
+        item.classList.remove("hidden");
       }
-    });
+    }
+    input.value = "";
   });
+});
