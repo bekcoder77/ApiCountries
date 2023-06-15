@@ -226,3 +226,61 @@ span {
   margin-left: 40px;
   font-weight: 400;
 }
+
+
+.back{
+  text-align: center;
+  width: 120px;
+  margin-left: 130px;
+  padding: 12px 34px;
+  margin-top: 90px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid white;
+}
+.countryModal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(58, 139, 139);
+  color: white;
+}
+.leftModal img{
+width: 550px;
+height: 400px;
+object-fit: contain;
+}
+.rightModal h4{
+margin-left: 100px;
+margin-top: 50px;
+margin-bottom: 30px;
+font-size: 35px;
+}
+.innerLeft p {
+padding-top: 15px;
+font-size: 20px;
+margin-left: 12px;
+font-weight: 400;
+}
+.fl-el{
+display: flex;
+justify-content: center;
+gap: 80px;
+flex-wrap: wrap;
+
+}
+.modal{
+display: flex;
+justify-content: center;
+gap: 80px;
+flex-wrap: wrap;
+}
+.hide{
+display: block;
+}
+.show{
+display: none;
+}
